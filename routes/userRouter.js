@@ -6,10 +6,12 @@ const express = require('express')
 const userRouter = express.Router();
 
 // Local Module
-const rootDit = require('../utils/pathUtil')
+// const rootDit = require('../utils/pathUtil')
+const { registerHome } = require('./hostRouter')
 
 userRouter.get('/', (req, res, next) => {
-    res.sendFile(path.join(rootDit, "views", "home.html"))
+    console.log(registerHome)
+    res.render("home", { registerHome: registerHome, pageTitle: 'airbnb Home' })
 })
 
 module.exports = userRouter;

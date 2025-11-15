@@ -9,12 +9,16 @@ const hostRouter = express.Router();
 const rootDit = require('../utils/pathUtil')
 
 hostRouter.get('/add-home', (req, res, next) => {
-    res.sendFile(path.join(rootDit, "views", "addHome.html"))
+    res.render('addHome', { pageTitle: 'Add Home' })
 })
+
+const registerHome = [];
 
 hostRouter.post('/add-home', (req, res, next) => {
-    console.log(req.body)
-    res.sendFile(path.join(rootDit, "views", "homeAdded.html"))
+    console.log('Home Registration successful for:', req.body, req.body.houseName)
+    registerHome.push({ houseName: req.body.houseName });
+    res.render('homeAdded', { pageTitle: 'Home Added Successfully' })
 })
 
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registerHome = registerHome;

@@ -79,3 +79,150 @@ npm start
 tailwindcss → continuously CSS generate karega
 
 nodemon → app.js ko auto-restart karega
+
+
+==================
+
+📌 Installing & Setting Up EJS
+
+EJS (Embedded JavaScript Templates) allows us to render dynamic HTML from Express.
+
+1️⃣ Install EJS
+npm install ejs
+
+
+या अगर आप इसे devDependencies में चाहते हो:
+
+npm install --save ejs
+
+2️⃣ Enable EJS in Express
+
+In app.js:
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');   // folder where .ejs files are stored
+
+3️⃣ Create the Views Directory
+
+Your project must contain a folder:
+
+/views
+    home.ejs
+    about.ejs
+    contact.ejs
+
+
+Example file: views/home.ejs
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1><%= title %></h1>
+</body>
+</html>
+
+4️⃣ Render an EJS Page from Express
+app.get("/", (req, res) => {
+    res.render("home", { title: "Welcome to Airbnb!" });
+});
+
+5️⃣ Passing Data to EJS
+
+You can send values from backend to frontend:
+
+res.render("home", {
+  username: "Amita",
+  isLoggedIn: true
+});
+
+
+In the .ejs file:
+
+<h2>Welcome <%= username %></h2>
+
+<% if (isLoggedIn) { %>
+  <p>You are logged in.</p>
+<% } else { %>
+  <p>Please login.</p>
+<% } %>
+
+✅ 1. EJS में Partial Include करने का तरीका
+
+सबसे basic और सबसे ज़्यादा इस्तेमाल वाला तरीका:
+
+<%- include("filename") %>
+
+
+✔ ये दूसरी EJS file को current page में embed कर देता है
+✔ Layout / Navbar / Footer के लिए perfect
+
+📌 Example: Navbar include करना
+👉 Step 1: views/partials/navbar.ejs
+<nav class="bg-red-500 text-white p-4">
+  <a href="/">Home</a> |
+  <a href="/add-home">Add Home</a>
+</nav>
+
+👉 Step 2: koi bhi page me include karo
+
+views/home.ejs:
+
+<%- include("partials/navbar") %>
+
+<h1>Welcome to Airbnb</h1>
+
+✅ 2. Include with Path
+
+Always path views folder ke base se likhna है.
+
+views/
+   partials/
+      navbar.ejs
+      footer.ejs
+   pages/
+      home.ejs
+
+
+Example:
+
+<%- include("partials/footer") %>
+
+✅ 3. Include with Data (Variables pass karna)
+
+मान लो तुम्हें include file में data भेजना हो:
+
+🔹 Pass data:
+<%- include("partials/navbar", { username: "Amita" }) %>
+
+🔹 Receive data inside navbar.ejs:
+<p>Welcome, <%= username %></p>
+
+✅ 4. Layout System (Header + Footer include)
+
+ये सबसे common pattern है:
+
+views/partials/header.ejs
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+</head>
+<body>
+
+views/partials/footer.ejs
+</body>
+</html>
+
+views/home.ejs
+<%- include("partials/header", { title: "Home" }) %>
+
+<h1>Hello from Home Page</h1>
+
+<%- include("partials/footer") %>
+
+
+✔ अब हर page में code repeat नहीं होगा
+✔ Professional EJS code structure बन जाएगा

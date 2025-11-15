@@ -6,10 +6,15 @@ const express = require('express');
 
 // Local Module
 const userRouter = require('./routes/userRouter')
-const hostRouter = require('./routes/hostRouter')
+const { hostRouter } = require('./routes/hostRouter')
 const rootDit = require('./utils/pathUtil')
 
 const app = express();
+
+// below call for ejs only
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 
 // below line har route pe check karega ki koi POST req ayi to use body parse kar ke req.body ke ander dal dena 
 app.use(express.urlencoded());
@@ -19,7 +24,7 @@ app.use('/host', hostRouter);
 app.use('/public', express.static(path.join(rootDit, "public")));
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(rootDit, "views", "404.html"))
+    res.status(404).render('404', { pageTitle: 'Page Not Found' })
 })
 
 const PORT = 3008;
