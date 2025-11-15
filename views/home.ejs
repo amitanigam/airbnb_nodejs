@@ -11,14 +11,41 @@
                         Here are our registered home:
                     </h1>
 
-                    <ul class="space-y-2 mt-4">
+                    <!-- Card Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+
                         <% registerHome.forEach(home=> { %>
-                            <li class="bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm 
-                   hover:bg-gray-50 hover:shadow-md transition-all cursor-pointer">
-                                <%= home.houseName %>
-                            </li>
+
+                            <div
+                                class="bg-white rounded-xl shadow-md hover:shadow-lg transition p-5 border border-gray-200">
+
+                                <!-- Title -->
+                                <h2 class="text-lg font-semibold text-gray-800">
+                                    <%= home.houseName %>
+                                </h2>
+
+                                <!-- Location -->
+                                <p class="text-gray-500 text-sm mt-1">
+                                    📍 <%= home.houseLocation %>
+                                </p>
+
+                                <!-- Price -->
+                                <p class="text-red-500 font-semibold text-md mt-3">
+                                    ₹ <%= home.housePrice %> / Night
+                                </p>
+
+                                <!-- Button -->
+                                <!-- <button class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg 
+                       hover:bg-red-600 transition">
+                                    View Details
+                                </button> -->
+
+                            </div>
+
                             <% }) %>
-                    </ul>
+
+                    </div>
+
                 </div>
             </div>
 

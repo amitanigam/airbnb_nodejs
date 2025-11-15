@@ -11,7 +11,7 @@ const { registerHome } = require('./hostRouter')
 
 userRouter.get('/', (req, res, next) => {
     console.log(registerHome)
-    res.render("home", { registerHome: registerHome, pageTitle: 'airbnb Home' })
+    res.render("home", { registerHome: registerHome, pageTitle: 'airbnb Home', currentPage: 'Home' })
 })
 
 module.exports = userRouter;

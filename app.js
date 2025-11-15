@@ -24,7 +24,7 @@ app.use('/host', hostRouter);
 app.use('/public', express.static(path.join(rootDit, "public")));
 
 app.use((req, res, next) => {
-    res.status(404).render('404', { pageTitle: 'Page Not Found' })
+    res.status(404).render('404', { pageTitle: 'Page Not Found', currentPage: '404' })
 })
 
 const PORT = 3008;

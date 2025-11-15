@@ -226,3 +226,24 @@ views/home.ejs
 
 ✔ अब हर page में code repeat नहीं होगा
 ✔ Professional EJS code structure बन जाएगा
+
+
+Date : 15:11:2025
+## Assignment – Airbnb Home Listing
+
+This assignment reuses the previous Airbnb Node + Express app and adds new features:
+
+1. **Extended "Add Home" form**
+   - Added more fields: `price per night`, `location`, `rating`, and `photo URL`.
+   - All fields are captured on submit and stored along with the home name.
+
+2. **Designed a Home Card layout**
+   - Each home is displayed as a card instead of a plain list item.
+   - Card shows: house name, price per night, location, rating and image (photo).
+   - Used Tailwind CSS for spacing, borders, shadows and hover effects.
+   - Responsive grid layout for multiple homes (1/2/3 columns based on screen size).
+
+3. **Active tab highlighting in the navbar**
+   - Top navigation has two tabs: **Go to Home** and **Add Home**.
+   - The currently selected page/tab is styled as “active” (different background/text style).
+   - Active tab is handled via EJS condition / variable in the template.
