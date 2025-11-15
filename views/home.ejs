@@ -12,38 +12,62 @@
                     </h1>
 
                     <!-- Card Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                    <!-- Outer container (optional, just to center) -->
+                    <div class="mt-6 max-w-6xl mx-auto">
 
-                        <% registerHome.forEach(home=> { %>
+                        <!-- GRID: 1 col mobile, 2 col tablet, 3 col desktop -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                            <div
-                                class="bg-white rounded-xl shadow-md hover:shadow-lg transition p-5 border border-gray-200">
+                            <% registerHome.forEach(home=> { %>
 
-                                <!-- Title -->
-                                <h2 class="text-lg font-semibold text-gray-800">
-                                    <%= home.houseName %>
-                                </h2>
+                                <div
+                                    class="bg-white rounded-3xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
 
-                                <!-- Location -->
-                                <p class="text-gray-500 text-sm mt-1">
-                                    📍 <%= home.houseLocation %>
-                                </p>
+                                    <!-- Image -->
+                                    <img src="<%= home.ImageUrl %>" alt="<%= home.houseName %>"
+                                        class="w-full h-44 object-cover" />
 
-                                <!-- Price -->
-                                <p class="text-red-500 font-semibold text-md mt-3">
-                                    ₹ <%= home.housePrice %> / Night
-                                </p>
+                                    <!-- Card Body -->
+                                    <div class="p-4">
 
-                                <!-- Button -->
-                                <!-- <button class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg 
-                       hover:bg-red-600 transition">
-                                    View Details
-                                </button> -->
+                                        <!-- Name -->
+                                        <h2 class="text-xl font-semibold text-gray-800 leading-snug">
+                                            <%= home.houseName %>
+                                        </h2>
 
-                            </div>
+                                        <!-- Location -->
+                                        <p class="text-gray-500 text-sm mt-1 flex items-center gap-1">
+                                            <span>📍</span>
+                                            <%= home.houseLocation %>
+                                        </p>
 
-                            <% }) %>
+                                        <!-- Rating (optional) -->
+                                        <% if (home.rating) { %>
+                                            <p class="text-yellow-500 font-medium text-sm mt-1 flex items-center gap-1">
+                                                <span>⭐</span>
+                                                <span>
+                                                    <%= home.rating %> / 5
+                                                </span>
+                                            </p>
+                                            <% } %>
 
+                                                <!-- Price -->
+                                                <p class="text-red-500 font-semibold text-md mt-3">
+                                                    ₹ <%= home.housePrice %> / Night
+                                                </p>
+
+                                                <!-- Button -->
+                                                <button
+                                                    class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+                                                    View Details
+                                                </button>
+
+                                    </div>
+                                </div>
+
+                                <% }) %>
+
+                        </div>
                     </div>
 
                 </div>
