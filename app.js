@@ -1,0 +1,28 @@
+// Core Modules
+const path = require('path')
+
+// External Moduler
+const express = require('express');
+
+// Local Module
+const userRouter = require('./routes/userRouter')
+const hostRouter = require('./routes/hostRouter')
+const rootDit = require('./utils/pathUtil')
+
+const app = express();
+
+// below line har route pe check karega ki koi POST req ayi to use body parse kar ke req.body ke ander dal dena 
+app.use(express.urlencoded());
+app.use(userRouter);
+app.use('/host', hostRouter);
+
+app.use('/public', express.static(path.join(rootDit, "public")));
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(rootDit, "views", "404.html"))
+})
+
+const PORT = 3008;
+app.listen(PORT, () => {
+    console.log(`Server running on address http://localhost:${PORT}`)
+})
