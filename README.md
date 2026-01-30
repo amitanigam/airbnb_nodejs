@@ -24,7 +24,7 @@ Features
 
 Routing split
 
-userRouter → ./routes/userRouter
+storeRouter → ./routes/storeRouter
 
 hostRouter mounted at /host → ./routes/hostRouter
 
@@ -41,7 +41,7 @@ Project Structure (suggested)
 .
 ├─ app.js
 ├─ routes/
-│  ├─ userRouter.js
+│  ├─ storeRouter.js
 │  └─ hostRouter.js
 ├─ utils/
 │  └─ pathUtil.js

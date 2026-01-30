@@ -1,9 +1,25 @@
 <nav class="bg-red-500 py-3 shadow-md">
     <div class="max-w-5xl mx-auto flex items-center gap-8 px-4">
         <a href="/"
-            class="<%= currentPage === 'Home' ? 'underline' : 'hover:underline' %> text-white font-medium ">Home</a>
+            class="<%= currentPage === 'index' ? 'underline' : 'hover:underline' %>  text-white font-medium ">
+            Airbnd</a>
+            
+        <a href="/homes"
+            class="<%= currentPage === 'Home' ? 'underline' : 'hover:underline' %> text-white font-medium ">Home-list</a>
+        
+        <a href="/Favourites"
+            class="<%= currentPage === 'Favourites' ? 'underline' : 'hover:underline' %>  text-white font-medium ">FavouriteList</a>
+        
+        <a href="/bookings"
+            class="<%= currentPage === 'bookings' ? 'underline' : 'hover:underline' %>  text-white font-medium ">Bookings</a>
+
+        <a href="/host/host-home-list"
+            class="<%= currentPage === 'Host-Homes' ? 'underline' : 'hover:underline' %>  text-white font-medium ">
+            Host Home</a>
+
         <a href="/host/add-home"
             class="<%= currentPage === 'addHome' ? 'underline' : 'hover:underline' %>  text-white font-medium ">Add
             Home</a>
+        
     </div>
 </nav>

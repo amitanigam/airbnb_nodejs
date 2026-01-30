@@ -1,0 +1,88 @@
+<%- include('../partials/head') %>
+    </head>
+
+    <body>
+
+        <%- include('../partials/nav') %>
+            <!-- ⭐ Centered Welcome Card -->
+            <div class="flex items-center justify-center mt-5 px-4">
+                <div class="bg-white px-10 py-8 rounded-xl shadow-lg">
+                    <h1 class="text-3xl font-bold text-gray-800">
+                        Here are our registered homes:
+                    </h1>
+
+                    <!-- Card Grid -->
+                    <!-- Outer container (optional, just to center) -->
+                    <div class="mt-6 max-w-6xl mx-auto">
+
+                        <!-- GRID: 1 col mobile, 2 col tablet, 3 col desktop -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                            <% registerHome.forEach(home=> { %>
+
+                                <div
+                                    class="bg-white rounded-3xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
+
+                                    <!-- Image -->
+                                    <img src="<%= home.ImageUrl %>" alt="<%= home.houseName %>"
+                                        class="w-full h-44 object-cover" />
+
+                                    <!-- Card Body -->
+                                    <div class="p-4">
+
+                                        <!-- Name -->
+                                        <h2 class="text-xl font-semibold text-gray-800 leading-snug">
+                                            <%= home.houseName %>
+                                        </h2>
+
+                                        <!-- Location -->
+                                        <p class="text-gray-500 text-sm mt-1 flex items-center gap-1">
+                                            <span>📍</span>
+                                            <%= home.houseLocation %>
+                                        </p>
+
+                                        <!-- Rating (optional) -->
+                                        <% if (home.rating) { %>
+                                            <p class="text-yellow-500 font-medium text-sm mt-1 flex items-center gap-1">
+                                                <span>⭐</span>
+                                                <span>
+                                                    <%= home.rating %> / 5
+                                                </span>
+                                            </p>
+                                            <% } %>
+
+                                                <!-- Price -->
+                                                <p class="text-red-500 font-semibold text-md mt-3">
+                                                    Rs. <%= home.housePrice %> / Night
+                                                </p>
+
+                                                <!-- Button -->
+                                                 <div class="flex justify-between">
+                                                     <a href="/homes/<%= home.id %>"
+                                                    class="mt-4 w-[40%] block text-center bg-blue-300 text-white py-2 rounded-lg hover:bg-red-600 transition">
+                                                    Details
+                                                </a>
+                                                 <button
+                                                    class="mt-4 w-[40%] bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+                                                    Book
+                                                </button>
+                                                 </div>
+                                               
+
+                                    </div>
+                                </div>
+
+                                <% }) %>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+    </body>
+
+    </html>

@@ -1,14 +1,14 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
     </head>
 
     <body>
 
-        <%- include('partials/nav') %>
+        <%- include('../partials/nav') %>
             <!-- ⭐ Centered Welcome Card -->
-            <div class="flex items-center justify-center mt-20 px-4">
+            <div class="flex items-center justify-center mt-5 px-4">
                 <div class="bg-white px-10 py-8 rounded-xl shadow-lg">
                     <h1 class="text-3xl font-bold text-gray-800">
-                        Here are our registered home:
+                        Hey Host! Here are yours homes.
                     </h1>
 
                     <!-- Card Grid -->
@@ -53,14 +53,21 @@
 
                                                 <!-- Price -->
                                                 <p class="text-red-500 font-semibold text-md mt-3">
-                                                    ₹ <%= home.housePrice %> / Night
+                                                    Rs. <%= home.housePrice %> / Night
                                                 </p>
 
                                                 <!-- Button -->
+                                                 <div class="flex justify-between">
+                                                     <button
+                                                      class="mt-4 w-[40%]  bg-blue-400 text-white py-2 rounded-lg hover:bg-blue-200 transition">
+                                                     Edit
+                                                     </button>
                                                 <button
-                                                    class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
-                                                    View Details
+                                                    class="mt-4 w-[40%] bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+                                                    Delete
                                                 </button>
+                                                 </div>
+                                               
 
                                     </div>
                                 </div>
